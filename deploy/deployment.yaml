@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: devops-test
+  name: devops-test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: devops-test
+  strategy:
+  template:
+    metadata:
+      labels:
+        app: devops-test
+    spec:
+      containers:
+      - image: devops-test
+        imagePullPolicy: IfNotPresent
+        name: devops-test
+        env:
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: mysql-root-password
+                name: mysql
+          - name: NODE_NAME
+            value: "minikube-test"
+        ports:
+          - containerPort: 8000
+            name: http
+            protocol: TCP
+        resources:
+          requests:
+            cpu: 1
+            memory: 1G
+          limits:
+            cpu: 2
+            memory: 2G
