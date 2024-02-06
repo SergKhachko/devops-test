@@ -40,4 +40,9 @@ Suggest how we can implement next items. Add your suggestions into this README f
 
 ### Suggestions
 
-put you suggestions here
+- use Hashicorp Vault for secrets management
+- use
+  - Managed cloud-native approaches [GKE Cloud Logs, Azure Insights, AWS CloudWatch] to simplify K8s internals / avoid maintenance
+  - Kube dashboard for super simplicity
+  - Fluentbit+OpenSearch for logs. Attach external persistence (EFS, Fileshare, etc), manage logs lifecycle
+  - Grafana + Prometheus for resource monitoring
