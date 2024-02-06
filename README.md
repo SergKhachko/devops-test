@@ -2,7 +2,7 @@ Fork this repo, so you can make changes and open PR
 
 ### Infrastructure
 Details for instance:
-AMI - ami-0cc92835ce645598a
+AMI - ami-0a90581127c6c8677
 
 Security group - sg-0d712d9df362c2213
 
