@@ -15,6 +15,14 @@ spec:
       labels:
         app: devops-test
     spec:
+      initContainers:
+        - name: wait-for-db
+          image: busybox
+          command: ["sh", "-c", "until nc -z -v -w1 mysql 3306; do echo 'Waiting for the database to be up...'; sleep 5; done"]
+      tolerations:
+        - key: "system"
+          operator: "Exists"
+          effect: "NoSchedule"
       containers:
       - image: devops-test
         imagePullPolicy: IfNotPresent
