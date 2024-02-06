@@ -15,6 +15,13 @@ spec:
       labels:
         app: devops-test
     spec:
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app: devops-test
       initContainers:
         - name: wait-for-db
           image: busybox
